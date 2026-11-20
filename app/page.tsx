@@ -66,8 +66,12 @@ export default function HomePage() {
 
           {/* A responsive grid: one card per product, straight from data. */}
           <div className="grid">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {products.map((product, idx) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                priority={idx < 2}
+              />
             ))}
           </div>
         </section>

@@ -853,3 +853,68 @@ a {
     transform: rotate(360deg);
   }
 }
+
+/* Skeleton Loading Placeholder */
+.skeleton-hero {
+  height: 180px;
+  background: linear-gradient(90deg, #e6e9f2 25%, #f0f2f8 50%, #e6e9f2 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.1rem;
+}
+
+.skeleton-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.skeleton-art {
+  height: 150px;
+  background: linear-gradient(90deg, #e6e9f2 25%, #f0f2f8 50%, #e6e9f2 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.skeleton-line {
+  height: 14px;
+  background: #e6e9f2;
+  border-radius: 6px;
+}
+
+.skeleton-title {
+  width: 70%;
+  height: 18px;
+}
+
+.skeleton-sub {
+  width: 90%;
+}
+
+.skeleton-price {
+  width: 40%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
