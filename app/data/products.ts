@@ -5,6 +5,7 @@ export interface Product {
   tagline: string;
   price: number;
   category: "Sneakers" | "Audio" | "Wearables" | "Gadgets";
+  image: string;
   emoji: string;
   accent: string; // CSS color used for the card art background
   accent2: string; // second color so the art can be a gradient
@@ -21,6 +22,7 @@ export const products: Product[] = [
     tagline: "Everyday running sneakers built for long miles.",
     price: 129,
     category: "Sneakers",
+    image: "/products/wave-runner.webp",
     emoji: "👟",
     accent: "#6c8cff",
     accent2: "#9db5ff",
@@ -36,6 +38,7 @@ export const products: Product[] = [
     tagline: "Grippy off-road shoes for rough terrain.",
     price: 149,
     category: "Sneakers",
+    image: "/products/trail-blazer.webp",
     emoji: "🥾",
     accent: "#2f9e6f",
     accent2: "#5fd1a0",
@@ -50,6 +53,7 @@ export const products: Product[] = [
     tagline: "Wireless earbuds with deep, clean bass.",
     price: 89,
     category: "Audio",
+    image: "/products/pulse-buds.webp",
     emoji: "🎧",
     accent: "#a06cff",
     accent2: "#c9a6ff",
@@ -65,6 +69,7 @@ export const products: Product[] = [
     tagline: "A pocket speaker that fills a room.",
     price: 59,
     category: "Audio",
+    image: "/products/echo-speaker.webp",
     emoji: "🔊",
     accent: "#e8820c",
     accent2: "#ffb259",
@@ -79,6 +84,7 @@ export const products: Product[] = [
     tagline: "A smartwatch that tracks everything.",
     price: 199,
     category: "Wearables",
+    image: "/products/time-keeper.webp",
     emoji: "⌚",
     accent: "#d64d7a",
     accent2: "#ff85ab",
@@ -94,6 +100,7 @@ export const products: Product[] = [
     tagline: "A minimalist fitness tracker.",
     price: 69,
     category: "Wearables",
+    image: "/products/focus-band.webp",
     emoji: "📿",
     accent: "#1fae9e",
     accent2: "#5fe0d1",
@@ -108,6 +115,7 @@ export const products: Product[] = [
     tagline: "A fast charger for every device.",
     price: 49,
     category: "Gadgets",
+    image: "/products/power-brick.webp",
     emoji: "🔋",
     accent: "#4b63d6",
     accent2: "#7d92ff",
@@ -122,6 +130,7 @@ export const products: Product[] = [
     tagline: "A tiny action camera for any adventure.",
     price: 119,
     category: "Gadgets",
+    image: "/products/clip-cam.webp",
     emoji: "📷",
     accent: "#e85d5d",
     accent2: "#ff9090",

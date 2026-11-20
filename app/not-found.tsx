@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Product Not Found | ShipYard",
+  description: "We could not find that item. It may have sold out or moved.",
+};
 
 export default function NotFound() {
   return (
