@@ -10,17 +10,17 @@ A high-performance product-catalog storefront built from scratch with **Next.js 
 
 | Category | Score |
 | :--- | :--- |
-| **Performance** | **92 / 100** ⚡ |
+| **Performance** | **97 / 100** ⚡ |
 | **Accessibility** | **100 / 100** 🎯 |
-| **Best Practices** | **96 / 100** 🛡️ |
+| **Best Practices** | **100 / 100** 🛡️ |
 | **SEO** | **100 / 100** 🔍 |
 
 ### Core Web Vitals
-- **Largest Contentful Paint (LCP):** 1.1 s
-- **First Contentful Paint (FCP):** 1.1 s
+- **First Contentful Paint (FCP):** 0.9 s
+- **Largest Contentful Paint (LCP):** 1.6 s
 - **Cumulative Layout Shift (CLS):** 0
-- **Total Blocking Time (TBT):** 350 ms
-- **Speed Index:** 2.6 s
+- **Total Blocking Time (TBT):** 110 ms
+- **Speed Index:** 4.2 s
 
 ![Lighthouse Performance Report](./docs/lighthouse.png)
 
