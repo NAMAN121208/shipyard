@@ -27,6 +27,8 @@ export function generateStaticParams() {
   return products.map((product) => ({ id: product.id }));
 }
 
+const basePath = process.env.NODE_ENV === "production" ? "/shipyard" : "";
+
 // Generate per-page dynamic metadata so each product page has its own title and description.
 export async function generateMetadata({
   params,
@@ -49,7 +51,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${product.name} | ShipYard`,
       description: product.tagline,
-      images: [product.image],
+      images: [`${basePath}${product.image}`],
     },
   };
 }
@@ -68,6 +70,7 @@ export default async function ProductPage({
   }
 
   const related = relatedProducts(product);
+  const imageSrc = `${basePath}${product.image}`;
 
   return (
     <main className="container">
@@ -88,7 +91,7 @@ export default async function ProductPage({
         >
           {product.badge && <span className="card-badge">{product.badge}</span>}
           <Image
-            src={product.image}
+            src={imageSrc}
             alt={product.name}
             fill
             priority

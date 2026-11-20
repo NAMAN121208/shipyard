@@ -3,6 +3,8 @@ import Link from "next/link";
 import Stars from "./Stars";
 import type { Product } from "../data/products";
 
+const basePath = process.env.NODE_ENV === "production" ? "/shipyard" : "";
+
 // The card takes one typed product as a prop. TypeScript checks every field.
 export default function ProductCard({
   product,
@@ -11,6 +13,7 @@ export default function ProductCard({
   product: Product;
   priority?: boolean;
 }) {
+  const imageSrc = `${basePath}${product.image}`;
   return (
     <Link href={`/products/${product.id}`} className="card">
       <div
@@ -21,7 +24,7 @@ export default function ProductCard({
       >
         {product.badge && <span className="card-badge">{product.badge}</span>}
         <Image
-          src={product.image}
+          src={imageSrc}
           alt={product.name}
           fill
           priority={priority}
