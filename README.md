@@ -1,41 +1,81 @@
-# ShipYard
+# ShipYard ⚓
 
-A product-catalog storefront built from scratch with **Next.js + TypeScript**. (Part 2 of 3: Storefront Optimization).
+A high-performance product-catalog storefront built from scratch with **Next.js + TypeScript**, optimized for speed, and deployed to GitHub Pages.
 
-## What it does
+**Live Site:** [https://naman121208.github.io/shipyard/](https://naman121208.github.io/shipyard/)
 
-- **Responsive Product Grid**: Rendered from typed data on the home page.
-- **Dynamic Product Detail Routes**: `/products/[id]` dynamic route with `generateStaticParams`.
-- **Image Optimization**: Product images powered by `next/image` with reserved layout dimensions, `fill`, and descriptive `alt` tags to eliminate layout shift (CLS).
-- **Font Optimization**: Self-hosted `next/font/google` (`Inter`) loaded once at the root layout without external `<link>` tags.
-- **Dynamic Component Lazy-Loading**: Heavy below-the-fold customer `Reviews` panel loaded on demand via `next/dynamic` with streaming loading skeletons.
-- **Dynamic Per-Page Metadata**: Static metadata export for home page and dynamic `generateMetadata` for `/products/[id]` routes providing custom titles and descriptions for search engines and social cards.
-- **Error Handling**: Friendly 404 page for missing or invalid IDs.
+---
 
-## Run it locally
+## Lighthouse Score (Mobile)
+
+| Category | Score |
+| :--- | :--- |
+| **Performance** | **92 / 100** ⚡ |
+| **Accessibility** | **100 / 100** 🎯 |
+| **Best Practices** | **96 / 100** 🛡️ |
+| **SEO** | **100 / 100** 🔍 |
+
+### Core Web Vitals
+- **Largest Contentful Paint (LCP):** 1.1 s
+- **First Contentful Paint (FCP):** 1.1 s
+- **Cumulative Layout Shift (CLS):** 0
+- **Total Blocking Time (TBT):** 350 ms
+- **Speed Index:** 2.6 s
+
+![Lighthouse Performance Report](./docs/lighthouse.png)
+
+---
+
+## Features & Optimizations
+
+- **Image Optimization:** Product images powered by `next/image` with reserved layout dimensions, `fill`, priority preloading on above-the-fold hero cards, and descriptive `alt` tags to eliminate Cumulative Layout Shift (CLS: 0).
+- **Self-Hosted Typography:** Zero external Google Fonts `<link>` tags; loaded once via `next/font/google` (`Inter`) to eliminate render-blocking font requests.
+- **Dynamic Component Lazy-Loading:** Heavy below-the-fold customer `Reviews` panel loaded on demand with `next/dynamic` and streaming skeleton fallbacks.
+- **Dynamic Per-Page Metadata:** Static metadata on the home page and dynamic `generateMetadata` on `/products/[id]` detail pages for product-specific titles, descriptions, and OpenGraph cards.
+- **Resilient States:**
+  - `app/loading.tsx`: Clean skeleton loading placeholder for smooth transitions.
+  - `app/error.tsx`: Client component error boundary (`"use client"`) with an interactive retry reset button.
+  - `app/not-found.tsx`: Friendly 404 page for missing or invalid product IDs.
+- **CI/CD Static Deployment:** Automated build and static deployment pipeline to GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`).
+
+---
+
+## Run Locally
 
 ```bash
+# Clone the repository
+git clone https://github.com/NAMAN121208/shipyard.git
+cd shipyard
+
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 # open http://localhost:3000
 ```
 
-## Build
+## Build & Export
 
 ```bash
+# Production static export (outputs to ./out)
 npm run build
 ```
 
-## Project structure
+---
+
+## Project Structure
 
 ```
 app/
-  layout.tsx              root layout (next/font Inter + nav + footer)
-  page.tsx                home page: responsive product grid + metadata export
+  layout.tsx              root layout (next/font Inter + nav + footer + metadataBase)
+  page.tsx                home page: responsive product grid + priority LCP + metadata
   globals.css             styles + reviews & loading skeleton styles
-  not-found.tsx           friendly 404 page + metadata export
+  loading.tsx             streaming skeleton loading placeholder
+  error.tsx               client component error boundary with retry reset
+  not-found.tsx           friendly 404 page with metadata
   components/
-    ProductCard.tsx       typed card using next/image with fill and alt
+    ProductCard.tsx       typed card with next/image, priority support, fill, alt
     Stars.tsx             star rating display component
     Reviews.tsx           re-exported customer reviews component
   data/
@@ -44,6 +84,11 @@ app/
     [id]/
       page.tsx            detail route with generateMetadata & dynamic Reviews import
       Reviews.tsx         interactive customer reviews panel (lazy-loaded chunk)
+.github/
+  workflows/
+    deploy.yml            automated GitHub Pages deployment workflow
+docs/
+  lighthouse.png          Lighthouse 92 Mobile Performance report screenshot
 public/
   products/               optimized webp product images
 ```
