@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shipyard.local"),
+  metadataBase: new URL("https://naman121208.github.io/shipyard/"),
   title: {
     default: "ShipYard",
     template: "%s | ShipYard",
